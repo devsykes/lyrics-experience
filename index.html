@@ -30,5 +30,18 @@
 
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <!-- layer 1: what user will see when opening -->
+    <div id="intro-overlay">
+      <div class="intro-content">
+        <button id="start-btn">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <p class="warning-text">Use headphones for the best experience</p>
+      </div>
+    </div>
+
+    <!-- Layer 2: what user will see next, the experience -->
+    <main id="main-content"></main>
+  </body>
 </html>
