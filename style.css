@@ -47,3 +47,7 @@ body {
     opacity var(--transition-speed) ease-in-out,
     visibility var(--transition-speed);
 }
+
+.intro-content {
+  text-align: center;
+}
