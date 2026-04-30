@@ -1,0 +1,19 @@
+/* 1. Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Design parameters */
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #ffffff; /* Color for buttons and small details */
+  --gray-text: #a7a7a7;
+  --transition-speed: 0.8s; /* for fadeout */
+}
+
+/* 3. Default body styles */
+body {
+}
