@@ -16,4 +16,7 @@
 
 /* 3. Default body styles */
 body {
+  background-color: var(--bg-color);
 }
+
+/* TODO: finish body styles */
