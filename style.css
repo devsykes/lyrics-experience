@@ -17,6 +17,15 @@
 /* 3. Default body styles */
 body {
   background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  overflow: hidden; /* Blocks scroll during intro */
+  height: 100vh;
+  width: 100vw;
 }
-
-/* TODO: finish body styles */
