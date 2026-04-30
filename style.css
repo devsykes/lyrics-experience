@@ -29,3 +29,21 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+/* 4. Intro */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition:
+    opacity var(--transition-speed) ease-in-out,
+    visibility var(--transition-speed);
+}
