@@ -51,3 +51,32 @@ body {
 .intro-content {
   text-align: center;
 }
+
+#start-btn {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#start-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  transform: scale(1.1);
+}
+
+.warning-text {
+  color: var(--gray-text);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
