@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+/* BLINDAJE MÓVIL: Forzamos el fondo base oscuro del HTML para que nunca blanquee abajo */
+html {
+  background-color: #0f0a07 !important;
+  height: 100%;
+}
+
 /* 2. Global Dynamic Design Tokens */
 :root {
   /* Warm, organic gradient tones matching the album artwork */
@@ -29,6 +35,7 @@ body {
     var(--bg-gradient-4)
   ) !important;
   background-size: 400% 400% !important;
+  background-attachment: fixed !important; /* Mantiene el fondo estático en el scroll móvil */
   animation: dynamicGradient 15s ease infinite !important;
 
   color: var(--text-color);
@@ -43,6 +50,8 @@ body {
   height: 100vh;
   width: 100vw;
   position: relative;
+  /* Evita espacios extra generados por barras de navegación en iOS/Android */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Ensure application layers stay strictly above the background visual effects */
@@ -52,15 +61,15 @@ body {
   z-index: 2;
 }
 
-/* 4. Fullscreen Splash Intro Cover Layout */
+/* 4. Fullscreen Splash Intro Cover Layout - FIXED FOR MOBILE TRANSITION */
 #intro-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  /* Seamless background matching the body context */
-  background: inherit;
+  /* Eliminamos inherit para evitar que el móvil calcule transparencias raras a blanco */
+  background-color: #0f0a07 !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -117,7 +126,6 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
-  /* Transparent background so the animated body gradient shows through */
   background: transparent;
 }
 
@@ -151,7 +159,7 @@ body {
   margin-bottom: 25px;
 }
 
-/* Timeline Stream Range Input Slider Styling - FIXED FOR NATIVE RESET */
+/* Timeline Stream Range Input Slider Styling - HIGH VISIBILITY CLEAN */
 #progress-bar {
   -webkit-appearance: none;
   appearance: none;
@@ -160,7 +168,7 @@ body {
   margin-bottom: 25px;
   cursor: pointer;
   height: 5px;
-  background: #f4f1de;
+  background: #f4f1de; /* Blanco marfil limpio de alta visibilidad */
   border-radius: 3px;
   outline: none;
   transition:
@@ -170,7 +178,7 @@ body {
 }
 
 #progress-bar:hover {
-  background: rgba(252, 163, 17, 0.5);
+  background: var(--accent-color); /* Cambia a oro al pasar el ratón */
 }
 
 #main-play-pause {
@@ -201,6 +209,8 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 20px;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .active-lyric {
@@ -210,8 +220,6 @@ body {
   line-height: 1.6;
   color: #f4f1de;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-
-  /* fadeIn and animation loop */
   animation:
     fadeIn 0.4s ease-in-out,
     sketchEffect 0.5s linear infinite;
@@ -359,7 +367,7 @@ body {
 #progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   appearance: none !important;
-  width: 22px; /* S ligeramente más grande para que el SVG luzca perfecto */
+  width: 22px;
   height: 22px;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fca311'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") !important;
   background-size: contain !important;
