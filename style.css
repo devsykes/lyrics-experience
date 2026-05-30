@@ -1,20 +1,20 @@
-/* 1. Reset */
+/* 1. Reset & General Normalization */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. Design parameters */
+/* 2. Global Dynamic Design Tokens */
 :root {
   --bg-color: #000000;
   --text-color: #ffffff;
-  --accent-color: #ffffff; /* Color for buttons and small details */
+  --accent-color: #ffffff;
   --gray-text: #a7a7a7;
-  --transition-speed: 0.8s; /* for fadeout */
+  --transition-speed: 0.8s;
 }
 
-/* 3. Default body styles */
+/* 3. Global Base Typography and Core Body Bounds */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -25,12 +25,12 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif;
-  overflow: hidden; /* Blocks scroll during intro */
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
 }
 
-/* 4. Intro */
+/* 4. Fullscreen Splash Intro Cover Layout */
 #intro-overlay {
   position: fixed;
   top: 0;
@@ -49,6 +49,10 @@ body {
 }
 
 .intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -81,16 +85,9 @@ body {
   text-transform: uppercase;
 }
 
-/* 5. Utility Classes for JS */
-#intro-overlay.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none; /* No click */
-}
-
-/* 6. Main Content & Player Layout */
+/* 5. Music Player Component Layout */
 #main-content {
-  opacity: 1; /* Ya lo mostramos */
+  opacity: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +102,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 400px; /* Controlamos el ancho del reproductor */
+  max-width: 400px;
   width: 100%;
 }
 
@@ -113,8 +110,8 @@ body {
   width: 280px;
   height: 280px;
   object-fit: cover;
-  border-radius: 12px; /* Bordes suaves estéticos */
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Un destello sutil detrás */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
   margin-bottom: 25px;
 }
 
@@ -128,6 +125,16 @@ body {
   color: var(--gray-text);
   font-size: 1rem;
   margin-bottom: 25px;
+}
+
+/* Timeline Stream Range Input Slider Styling */
+#progress-bar {
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 25px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+  height: 4px;
 }
 
 #main-play-pause {
@@ -147,4 +154,41 @@ body {
 #main-play-pause:hover {
   border-color: var(--text-color);
   transform: scale(1.05);
+}
+
+/* 6. Dynamic Lyrics Presentation Layout */
+#lyrics-wrapper {
+  margin-top: 30px;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.active-lyric {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-color);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* 7. Utility State Animation Classes for JavaScript Contexts */
+#intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

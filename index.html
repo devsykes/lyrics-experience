@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sanity Experience</title>
 
+    <!-- FontAwesome Icons for Play, Pause and Replay buttons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
+    <!-- External Stylesheet -->
     <link rel="stylesheet" href="style.css" />
 
+    <!-- External JavaScript Application Logic -->
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- Layer 1: Splash Intro Overlay Screen -->
     <div id="intro-overlay">
       <div class="intro-content">
         <button id="start-btn">
@@ -24,7 +28,9 @@
       </div>
     </div>
 
+    <!-- Layer 2: Main Application Interface -->
     <main id="main-content">
+      <!-- Music Player Viewport Component -->
       <section id="player">
         <img src="assets/cover.jpg" alt="Sanity Cover" class="album-art" />
 
@@ -33,18 +39,26 @@
           <p>Louis Tomlinson</p>
         </div>
 
+        <!-- Hidden Native HTML5 Audio Media API Node -->
         <audio id="audio-player">
           <source src="assets/Sanity.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
 
+        <!-- Progress Timeline Seek Slider Control -->
+        <input type="range" id="progress-bar" min="0" max="100" value="0" />
+
+        <!-- Primary Media Flow State Toggle Button -->
         <button id="main-play-pause">
           <i class="fa-solid fa-pause"></i>
         </button>
       </section>
 
+      <!-- Dynamic Lyrics Viewport Display Component -->
       <section id="lyrics-wrapper">
-        <div id="lyrics-container"></div>
+        <div id="lyrics-container">
+          <!-- Injected dynamically via script.js -->
+        </div>
       </section>
     </main>
   </body>
