@@ -192,10 +192,10 @@ body {
   transform: scale(1.05);
 }
 
-/* 6. Dynamic Lyrics Presentation Layout */
+/* 6. Dynamic Lyrics Presentation Layout (HAND-DRAWN VIBE) */
 #lyrics-wrapper {
   margin-top: 30px;
-  min-height: 60px;
+  min-height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,12 +204,41 @@ body {
 }
 
 .active-lyric {
-  font-size: 1.3rem;
-  font-weight: 300;
+  font-family: "Architects Daughter", cursive, sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
   line-height: 1.6;
-  color: var(--text-color);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-  animation: fadeIn 0.4s ease-in-out;
+  color: #f4f1de;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+
+  /* fadeIn and animation loop */
+  animation:
+    fadeIn 0.4s ease-in-out,
+    sketchEffect 0.5s linear infinite;
+  display: inline-block;
+  will-change: transform;
+}
+
+/* shaking animation */
+@keyframes sketchEffect {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-0.5px, 0.5px) rotate(-0.5deg);
+  }
+  40% {
+    transform: translate(-1px, -0.5px) rotate(0.5deg);
+  }
+  60% {
+    transform: translate(0.5px, -0.5px) rotate(-0.3deg);
+  }
+  80% {
+    transform: translate(1px, 0.5px) rotate(0.3deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 /* 7. Utility State Animation Classes for JavaScript Contexts */
