@@ -1,5 +1,20 @@
-<body>
-    <!-- layer 1: what user will see when opening -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanity Experience</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+  <body>
     <div id="intro-overlay">
       <div class="intro-content">
         <button id="start-btn">
@@ -9,35 +24,28 @@
       </div>
     </div>
 
-    <!-- Layer 2: what user will see next, the experience -->
     <main id="main-content">
-    
-        <section id="player">
-            <img src="assets/cover.jpg" alt="Sanity Cover" class="album-art">
-            
-            <div class="track-info">
-                <h1>Sanity</h1>
-                <p>Louis Tomlinson</p>
-            </div>
+      <section id="player">
+        <img src="assets/cover.jpg" alt="Sanity Cover" class="album-art" />
 
-            <!-- Hidden audio player -->
-            <audio id="audio-player">
-                <source src="Assets/Sanity.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+        <div class="track-info">
+          <h1>Sanity</h1>
+          <p>Louis Tomlinson</p>
+        </div>
 
-            <!-- Control button for later -->
-            <button id="main-play-pause">
-                <i class="fa-solid fa-pause"></i>
-            </button>
-        </section>
+        <audio id="audio-player">
+          <source src="assets/Sanity.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
 
-        <section id="lyrics-wrapper">
-            <div id="lyrics-container">
-                <!-- JavaScript will fill it later w/ lyrics -->
-            </div>
-        </section>
+        <button id="main-play-pause">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+      </section>
 
+      <section id="lyrics-wrapper">
+        <div id="lyrics-container"></div>
+      </section>
     </main>
   </body>
 </html>

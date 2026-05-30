@@ -87,3 +87,64 @@ body {
   visibility: hidden;
   pointer-events: none; /* No click */
 }
+
+/* 6. Main Content & Player Layout */
+#main-content {
+  opacity: 1; /* Ya lo mostramos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--bg-color);
+}
+
+#player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 400px; /* Controlamos el ancho del reproductor */
+  width: 100%;
+}
+
+.album-art {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px; /* Bordes suaves estéticos */
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Un destello sutil detrás */
+  margin-bottom: 25px;
+}
+
+.track-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.track-info p {
+  color: var(--gray-text);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+#main-play-pause {
+  background: transparent;
+  border: 1px solid var(--gray-text);
+  color: var(--text-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+#main-play-pause:hover {
+  border-color: var(--text-color);
+  transform: scale(1.05);
+}
