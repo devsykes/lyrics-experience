@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* BLINDAJE MÓVIL: Forzamos el fondo base oscuro del HTML para que nunca blanquee abajo */
 html {
   background-color: #0f0a07 !important;
   height: 100%;
