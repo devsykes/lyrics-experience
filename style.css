@@ -80,3 +80,10 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* 5. Utility Classes for JS */
+#intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* No click */
+}
