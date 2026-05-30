@@ -7,16 +7,30 @@
 
 /* 2. Global Dynamic Design Tokens */
 :root {
-  --bg-color: #000000;
+  /* Warm, organic gradient tones matching the album artwork */
+  --bg-gradient-1: #0f0a07; /* Deep charcoal brown */
+  --bg-gradient-2: #24140a; /* Rich dark amber / chocolate */
+  --bg-gradient-3: #1a120b; /* Muted espresso tone */
+  --bg-gradient-4: #3d2311; /* Soft warm ochre shimmer */
   --text-color: #ffffff;
-  --accent-color: #ffffff;
-  --gray-text: #a7a7a7;
+  --accent-color: #fca311; /* Vibrant warm amber for sliders and active highlights */
+  --gray-text: #bfa89c; /* Muted warm grey-brown for secondary texts */
   --transition-speed: 0.8s;
 }
 
 /* 3. Global Base Typography and Core Body Bounds */
 body {
-  background-color: var(--bg-color);
+  /* Force a massive background size so the animation actually has room to slide and move */
+  background: linear-gradient(
+    -45deg,
+    var(--bg-gradient-1),
+    var(--bg-gradient-2),
+    var(--bg-gradient-3),
+    var(--bg-gradient-4)
+  ) !important;
+  background-size: 400% 400% !important;
+  animation: dynamicGradient 15s ease infinite !important;
+
   color: var(--text-color);
   font-family:
     "Inter",
@@ -28,6 +42,35 @@ body {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  position: relative;
+}
+
+/* Abstract Doodle/Sparkle Overlay background effect */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Fine geometric dot structure to add subtle texture */
+  background-image:
+    radial-gradient(rgba(252, 163, 17, 0.15) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    20px 20px;
+  animation: sparkleTwinkle 6s ease-in-out infinite alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure application layers stay strictly above the background visual effects */
+#intro-overlay,
+#main-content {
+  position: relative;
+  z-index: 2;
 }
 
 /* 4. Fullscreen Splash Intro Cover Layout */
@@ -37,7 +80,8 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: var(--bg-color);
+  /* Seamless background matching the body context */
+  background: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +118,7 @@ body {
 
 #start-btn:hover {
   background-color: var(--accent-color);
-  color: var(--bg-color);
+  color: #000000;
   transform: scale(1.1);
 }
 
@@ -94,7 +138,8 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
-  background-color: var(--bg-color);
+  /* CRITICAL FIX: Removed the solid background color so the animated body gradient shows through */
+  background: transparent;
 }
 
 #player {
@@ -111,7 +156,7 @@ body {
   height: 280px;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
   margin-bottom: 25px;
 }
 
@@ -172,6 +217,7 @@ body {
   font-weight: 300;
   line-height: 1.6;
   color: var(--text-color);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -190,5 +236,30 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Smooth fluid background aura motion translation */
+@keyframes dynamicGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Gentle ambient breathing effect for the background textures */
+@keyframes sparkleTwinkle {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.02);
   }
 }

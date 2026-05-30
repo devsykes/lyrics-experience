@@ -6,11 +6,14 @@ const playPauseIcon = mainPlayPauseBtn.querySelector("i");
 const lyricsContainer = document.getElementById("lyrics-container");
 const progressBar = document.getElementById("progress-bar");
 
+// Keep track of the currently displayed lyric line to prevent flickering
+let currentActiveLine = null;
+
 // Timestamps and lyrics data layout
 const lyrics = [
   { time: 0.0, text: "♪" },
   { time: 7.6, text: "I got my sanity" },
-  { time: 9.8, text: "It's only me and nobody" },
+  { time: 9.4, text: "It's only me and nobody" },
   { time: 11.5, text: "I know you're mad at me" },
   { time: 13.4, text: "I don't know what to say" },
   { time: 15.3, text: "I got my sanity" },
@@ -134,9 +137,14 @@ function updateLyrics() {
     );
   });
 
+  // CRITICAL: Only update DOM if the active lyric line has actually changed to prevent flickering
   if (currentLine) {
-    lyricsContainer.innerHTML = `<p class="active-lyric">${currentLine.text}</p>`;
+    if (currentActiveLine !== currentLine) {
+      currentActiveLine = currentLine;
+      lyricsContainer.innerHTML = `<p class="active-lyric">${currentLine.text}</p>`;
+    }
   } else {
+    currentActiveLine = null;
     lyricsContainer.innerHTML = "";
   }
 }
